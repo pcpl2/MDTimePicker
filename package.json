@@ -1,7 +1,7 @@
 {
   "name": "mdtimepicker",
   "version": "1.1.0",
-  "description": "MDTimePicker\r ========",
+  "description": "MDTimePicker",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pcpl2/MDTimePicker.git"
