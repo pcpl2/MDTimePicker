@@ -11,5 +11,14 @@
   "bugs": {
     "url": "https://github.com/pcpl2/MDTimePicker/issues"
   },
-  "homepage": "https://github.com/pcpl2/MDTimePicker#readme"
+  "homepage": "https://github.com/pcpl2/MDTimePicker#readme",
+  "scripts": {
+    "build": "npm run buildJs && npm run buildCss",
+    "buildJs": "uglifyjs mdtimepicker.js -o mdtimepicker.min.js --compress --mangle ",
+    "buildCss": "uglifycss --debug mdtimepicker.css mdtimepicker-theme.css > mdtimepicker.min.css"
+  },
+  "devDependencies": {
+    "uglify-js": "^3.10.0",
+    "uglifycss": "0.0.29"
+  }
 }
