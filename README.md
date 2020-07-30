@@ -6,7 +6,10 @@ Material concept time picker jquery plugin.
 **[DEMO](https://dmuy.github.io/MDTimePicker/)**
 
 ![alt text](https://i.imgur.com/4LyivoZ.png "TimePicker: Hour")
+![alt text](https://i.imgur.com/KmNOMuR.png "TimePicker: Hour 24")
 ![alt text](https://i.imgur.com/BACEvsl.png "TimePicker: Minute")
+![alt text](https://i.imgur.com/gX35vQu.png "TimePicker: Minute 24")
+
 
 ## How to use
 Make sure you include the jQuery library first.
@@ -30,20 +33,6 @@ Then add this piece of code in your `script` tag:
 </script>
 ```
 
-### CDN
-Use the following if you don't want to host the `js` and `css` files:
-```
-https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker/mdtimepicker.css
-https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker/mdtimepicker.js
-```
-Minified version:
-```
-https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker/mdtimepicker.min.css
-https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker/mdtimepicker.min.css
-```
-
-[Learn more about the CDN](https://www.jsdelivr.com/features#gh)
-
 ### Remember
 Comment or remove the line shown below in the css file if you already have a link to the Roboto font.
 ```css
@@ -55,6 +44,7 @@ Default time picker configurations.
 ```javascript
 {
     timeFormat: 'hh:mm:ss.000', // format of the time value (data-time attribute)
+    is24Hour: true        // show picker in 24 hour mode
     format: 'h:mm tt',    // format of the input value
     theme: 'blue',        // theme of the timepicker
     readOnly: true,       // determines if input is readonly

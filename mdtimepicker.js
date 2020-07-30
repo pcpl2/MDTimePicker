@@ -153,7 +153,7 @@
 			if(!this.config.is24Hour) {
 				time.wrapper.append(time.am_pm)
 			}
-			
+
 			time.wrapper.append(time.hour)
 				.append(time.dots)
 				.append(time.minute)
@@ -477,7 +477,7 @@
 
 	$.fn.mdtimepicker.defaults = {
 		timeFormat: 'hh:mm:ss.000',	// format of the time value (data-time attribute)
-		is24Hour: true,
+		is24Hour: true,             // show picker in 24 hour mode
 		format: 'h:mm tt',			// format of the input value
 		theme: 'blue',				// theme of the timepicker
 		readOnly: true,				// determines if input is readonly
