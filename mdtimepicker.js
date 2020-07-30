@@ -179,8 +179,13 @@
 			if(this.config.is24Hour) {
 				for (var i = 12; i < 24; i++) {
 					var deg = (HOUR_START_DEG + (i * HOUR_DEG_INCR)) % END_DEG
-					var value = i + 1,
-						hour = $('<div class="mdtp__digit h24 rotate-' + deg + '" data-hour="' + value + '"><span>'+ value +'</span></div>');
+					if(i + 1 == 24) {
+						var value = 00
+					} else {
+						var value = i + 1
+					}
+
+					var hour = $('<div class="mdtp__digit h24 rotate-' + deg + '" data-hour="' + value + '"><span>'+ value +'</span></div>');
 					
 					hour.find('span').click(function () {
 						var _data = parseInt($(this).parent().data('hour'))
