@@ -1,5 +1,5 @@
 /* -- DO NOT REMOVE --
- * jQuery MDTimePicker v1.0 plugin
+ * jQuery MD-Time-Picker v1.1 plugin
  * 
  * Author: Dionlee Uy
  * Email: dionleeuy@gmail.com

@@ -1,9 +1,9 @@
-MDTimePicker
+MD-Time-Picker
 ========
 
 Material concept time picker jquery plugin.
 
-**[DEMO](https://dmuy.github.io/MDTimePicker/)**
+**[DEMO](https://pcpl2.github.io/MDTimePicker/)**
 
 ![alt text](https://i.imgur.com/4LyivoZ.png "TimePicker: Hour")
 ![alt text](https://i.imgur.com/KmNOMuR.png "TimePicker: Hour 24")
