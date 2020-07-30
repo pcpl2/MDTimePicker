@@ -4,13 +4,17 @@
  * Author: Dionlee Uy
  * Email: dionleeuy@gmail.com
  *
- * Date: Tuesday, August 28 2017
+ * Edited:
+ * Author: Patryk 'pcpl2' Ławicki
+ * https://github.com/pcpl2
+ * 
+ * Date: 30.07.2020
  *
  * @requires jQuery
  * -- DO NOT REMOVE -- */
  if (typeof jQuery === 'undefined') { throw new Error('MDTimePicker: This plugin requires jQuery'); }
 +function ($) {
-	var MDTP_DATA = "mdtimepicker", HOUR_START_DEG = 120, MIN_START_DEG = 90, END_DEG = 360, HOUR_DEG_INCR = 30, MIN_DEG_INCR = 6,
+	var MDTP_DATA = "mdtimepicker", HOUR_START_DEG = 120, MIN_START_DEG = 90, END_DEG = 360, HOUR_DEG_INCR = 30, HOUR_24_DEG_INCR = 15, MIN_DEG_INCR = 6,
 		EX_KEYS = [9, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123];
 
 	var Time = function (hour, minute) {
@@ -145,10 +149,14 @@
 				time = picker.timeHolder, clock = picker.clockHolder;
 
 			// Setup time holder
+
+			if(!this.config.is24Hour) {
+				time.wrapper.append(time.am_pm)
+			}
+			
 			time.wrapper.append(time.hour)
 				.append(time.dots)
 				.append(time.minute)
-				.append(time.am_pm)
 				.appendTo(wrapper);
 
 			// Setup hours
@@ -168,6 +176,22 @@
 				clock.clock.hours.append(hour);
 			}
 
+			if(this.config.is24Hour) {
+				for (var i = 12; i < 24; i++) {
+					var deg = (HOUR_START_DEG + (i * HOUR_DEG_INCR)) % END_DEG
+					var value = i + 1,
+						hour = $('<div class="mdtp__digit h24 rotate-' + deg + '" data-hour="' + value + '"><span>'+ value +'</span></div>');
+					
+					hour.find('span').click(function () {
+						var _data = parseInt($(this).parent().data('hour'))
+						_.setHour(_data);
+						_.switchView('minutes');
+					});
+
+					clock.clock.hours.append(hour);
+				}
+			}
+
 			// Setup minutes
 			for (var i = 0; i < 60; i++) {
 				var min = i < 10 ? '0' + i : i, deg = (MIN_START_DEG + (i * MIN_DEG_INCR)) % END_DEG,
@@ -184,8 +208,11 @@
 			}
 
 			// Setup clock
+			if(!this.config.is24Hour) {
+				clock.clock.wrapper.append(clock.am).append(clock.pm)
+			}
+
 			clock.clock.wrapper
-				.append(clock.am).append(clock.pm)
 				.append(clock.clock.dot)
 				.append(clock.clock.hours)
 				.append(clock.clock.minutes)
@@ -216,12 +243,12 @@
 			var that = this;
 
 			this.selected.setHour(hour);
-			this.timepicker.timeHolder.hour.text(this.selected.getHour(true));
+			this.timepicker.timeHolder.hour.text(this.selected.getHour(!that.config.is24Hour));
 
 			this.timepicker.clockHolder.clock.hours.children('div').each(function (idx, div) {
 				var el = $(div), val = el.data('hour');
 
-				el[val === that.selected.getHour(true) ? 'addClass' : 'removeClass']('active');
+				el[val === that.selected.getHour(!that.config.is24Hour) ? 'addClass' : 'removeClass']('active');
 			});
 		},
 
@@ -450,6 +477,7 @@
 
 	$.fn.mdtimepicker.defaults = {
 		timeFormat: 'hh:mm:ss.000',	// format of the time value (data-time attribute)
+		is24Hour: true,
 		format: 'h:mm tt',			// format of the input value
 		theme: 'blue',				// theme of the timepicker
 		readOnly: true,				// determines if input is readonly

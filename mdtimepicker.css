@@ -4,7 +4,11 @@
  * Author: Dionlee Uy
  * Email: dionleeuy@gmail.com
  *
- * Date: Tuesday, August 28 2017
+ * Edited:
+ * Author: Patryk 'pcpl2' Ławicki
+ * https://github.com/pcpl2
+ * 
+ * Date: 30.07.2020
  */
  @import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
  
@@ -138,12 +142,31 @@
 	transform-origin: right center;
 	z-index: 1;
 }
+
+.h24 { 
+	margin-top: -16px !important;
+    width: 36% !important;
+    top: 50% !important;
+    left: 14% !important;
+}
 	.mdtp__clock .mdtp__digit span { 
 		display: inline-block;
 		width: 32px;
 		height: 32px;
 		line-height: 32px;
 		margin-left: 8px;
+		text-align: center;
+		border-radius: 50%;
+		cursor: pointer;
+		transition: background-color .28s, color .14s;
+	}
+
+	.mdtp__clock .mdtp__digit .h24 span { 
+		display: inline-block;
+		width: 32px;
+		height: 32px;
+		line-height: 32px;
+		margin-left: 0px;
 		text-align: center;
 		border-radius: 50%;
 		cursor: pointer;
